@@ -16,6 +16,12 @@
 				button.btn.btn-danger.delete(@click="deleteModel") 
 					i.fa.fa-trash
 					| Delete
+				button.btn.btn-info.new(@click="prevPage") 
+					i.fa.fa-arrow-left
+					| Previous page
+				button.btn.btn-info.new(@click="nextPage") 
+					i.fa.fa-arrow-right
+					| Next page
 
 			.errors.text-center
 				div.alert.alert-danger(v-for="item in validationErrors", track-by="$index") {{ item.field.label}}: 
@@ -70,7 +76,7 @@
 
 				formOptions: {
 					validateAfterLoad: true,
-					validateAfterChanged: false,
+					validateAfterChanged: true,
 					validateBeforeSave: true
 				}
 			}
@@ -134,6 +140,14 @@
 					el.focus()
 
 			},			
+
+			nextPage() {
+				this.schema.currentPage++;
+			},		
+
+			prevPage() {
+				this.schema.currentPage--;
+			},
 
 			saveModel() {
 				console.log("Save model...");

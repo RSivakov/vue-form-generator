@@ -14,6 +14,7 @@ div
 				.hint(v-if="field.hint") {{ field.hint }}
 				.errors(v-if="field.errors && field.errors.length > 0")
 					span(v-for="error in field.errors", track-by="$index") {{ error }}
+		button
 </template>
 
 <script>
@@ -68,9 +69,13 @@ div
 			fields() {
 				let res = [];
 				if (this.schema) {
-					each(this.schema.fields, (field) => {
-						if (!this.multiple || field.multi === true)
-							res.push(field);
+					each(this.schema.pages, (page, index) => {
+						if (index == this.schema.currentPage) {
+							each(page.fields, (field) => {
+								if (!this.multiple || field.multi === true)
+									res.push(field);
+							});
+						}
 					});
 				}
 
