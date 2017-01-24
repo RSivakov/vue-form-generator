@@ -8,17 +8,6 @@ module.exports = {
 	pages: [
 		{
 			fields: [
-
-				/***********/
-				/*  INPUT  */
-				/***********/
-				{
-				    type: "input",
-				    inputType: "hidden",
-				    label: "--- INPUT ---",
-				    model: "",
-				    styleClasses: "alert alert-info"
-				},
 				{
 				    type: "input",
 				    inputType: "hidden",
@@ -27,32 +16,43 @@ module.exports = {
 				    inputName: "hiddenField"
 				},
 				{
-				    type: "input",
-				    inputType: "text",
+				    type: "text",
 					label: "First name",
 					model: "firstName",
-					featured: true,
 					required: true,
 					placeholder: "User's first name",
 					styleClasses: "half-width",
-					validator: validators.string,
-					onChanged(model, newVal, oldVal, field) {
-						console.log(`Model's name changed from ${oldVal} to ${newVal}. Model:`, model);
-					},
-					onValidated(model, errors, field) {
-						if (errors.length > 0)
-							console.warn("Validation error in Name field! Errors:", errors);
-					}
+					validator: validators.string
 				},
 				{
-				    type: "input",
-				    inputType: "text",
+				    type: "text",
 					label: "Last name",
 					model: "lastName",
-					featured: true,
 					required: true,
-					placeholder: "User's last name",
 					styleClasses: "half-width",
+					placeholder: "User's last name",
+					validator: validators.string
+				},
+			]
+		},
+		{
+			fields: [
+				{
+				    type: "text",
+					label: "Street",
+					model: "street",
+					required: true,
+					placeholder: "User's first name",
+					styleClasses: "half-width",
+					validator: validators.string
+				},
+				{
+				    type: "text",
+					label: "Foo",
+					model: "foo",
+					required: true,
+					styleClasses: "half-width",
+					placeholder: "User's last name",
 					validator: validators.string
 				},
 			]
